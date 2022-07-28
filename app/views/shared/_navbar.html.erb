@@ -1,0 +1,12 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to "Fakebook", root_path, class: "navbar-brand" %>
+    <ul class="navbar-nav">
+      <li>
+        <%= button_to "Sign out", destroy_user_session_path,
+          method: :delete, data: { turbo: false },
+          class: 'btn btn-danger px-3' %>
+      </li>
+    </ul>
+  </div>
+</nav>

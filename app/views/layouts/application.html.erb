@@ -14,7 +14,8 @@
     <% if user_signed_in? %>
       <%= render 'shared/navbar' %>
     <% end %>
-    <main class="container">
+    <%= render 'shared/flash' %>
+    <main class="container mt-5">
       <%= yield %>
     </main>
   </body>

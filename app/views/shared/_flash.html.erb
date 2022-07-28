@@ -1,0 +1,9 @@
+<div class="container">
+  <% if flash[:notice] %>
+    <%= render partial: 'shared/alert', locals: { type: 'success', message: flash[:notice] } %>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <%= render partial: 'shared/alert', locals: { type: 'danger', message: flash[:alert] } %>
+  <% end %>
+</div>

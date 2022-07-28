@@ -1,0 +1,29 @@
+<% if local_assigns[:full] %>
+  <% style = "col" %>
+<% else %>
+  <% style ="col-sm-12 col-lg-4 p-2" %>
+<% end %>
+
+<div class="<%= style %>">
+  <div class="card h-100">
+    <div class="card-body">
+      <div class="card-title">
+        <%= post.user %>
+      </div>
+      <div class="card-subtitle text-muted">
+        <%= link_to post_path(post), class: "text-reset text-decoration-none" do %>
+          <%= time_ago_in_words post.created_at %> ago.
+        <% end %>
+      </div>
+      <hr>
+      <p class="card-text px-5">
+
+        <% if local_assigns[:full] %>
+          <%= post.body %>
+        <% else %>
+          <%= truncate post.body, length: 256 %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>

@@ -9,7 +9,7 @@ Implementation of a Facebook clone using *Ruby on Rails*.
 4) [ ] Users can send Friend Requests to other Users.
 5) [ ] A User must accept the Friend Request to become friends.
 6) [ ] The Friend Request shows up in the notifications section of a User’s navbar.
-7) [ ] Users can create Posts (text only to start).
+7) [x] Users can create Posts (text only to start).
 8) [ ] Users can Like Posts.
 9) [ ] Users can Comment on Posts.
 10) [ ] Posts should always display with the post content, author, comments and likes.

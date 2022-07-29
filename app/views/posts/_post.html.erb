@@ -1,33 +1,23 @@
-<% if local_assigns[:full] %>
-  <% style = "col" %>
-<% else %>
-  <% style ="col-sm-12 col-lg-4 p-2" %>
-<% end %>
-
-<div class="<%= style %>">
-  <div class="card h-100">
-    <div class="card-body">
-      <div class="card-title">
-        <%= post.user %>
-      </div>
-      <div class="card-subtitle text-muted">
-        <%= link_to post_path(post), class: "text-reset text-decoration-none" do %>
-          <%= time_ago_in_words post.created_at %> ago.
-        <% end %>
-      </div>
-      <hr>
-      <p class="card-text px-5">
-
-        <% if local_assigns[:full] %>
-          <%= post.body %>
-        <% else %>
-          <%= truncate post.body, length: 256 %>
-        <% end %>
-      </p>
-      <hr>
-        <p><%= pluralize(post.comments.count, 'Comment') %></p>
-      <hr>
-      <%= render partial: 'comments/form', locals: { post: post } %>
+<div class="row g-4">
+  <div class="col-12 col-lg-8">
+    <h4><%= post.user %></h4>
+    <p class="card-subtitle text-muted">
+      <%= link_to post_path(post), class: "text-reset text-decoration-none" do %>
+        <%= time_ago_in_words post.created_at %> ago.
+      <% end %>
+    </p>
+    <div>
+      <%= post.body %>
     </div>
+  </div>
+  <div class="col">
+    <h4><%= pluralize(post.comments.count, 'comment') %></h4>
+    <hr>
+    <%= render partial: 'comments/form', locals: { post: post } %>
+    <hr>
+    <ul class="mx-2">
+      <%= render partial: 'comments/comment', layout: 'shared/li',
+        collection: post.comments, as: :comment %>
+    </ul>
   </div>
 </div>

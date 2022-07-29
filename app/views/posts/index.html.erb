@@ -5,5 +5,5 @@
 <hr>
 
 <div class="row">
-  <%= render @posts %>
+  <%= render partial: 'card', collection: @posts, as: :post %>
 </div>

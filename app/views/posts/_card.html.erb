@@ -14,7 +14,7 @@
       <p class="card-text"><%= truncate post.body, length: 256 %></p>
     </div>
     <div class="card-footer">
-      <p><%= pluralize(post.comments.count, 'Comment') %></p>
+      <p><%= pluralize(post.comments.size, 'Comment') %></p>
       <%= render partial: 'comments/form', locals: { post: post } %>
     </div>
   </div>

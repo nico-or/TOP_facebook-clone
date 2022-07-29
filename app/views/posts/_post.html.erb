@@ -24,6 +24,10 @@
           <%= truncate post.body, length: 256 %>
         <% end %>
       </p>
+      <hr>
+        <p><%= pluralize(post.comments.count, 'Comment') %></p>
+      <hr>
+      <%= render partial: 'comments/form', locals: { post: post } %>
     </div>
   </div>
 </div>

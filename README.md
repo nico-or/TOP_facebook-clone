@@ -11,7 +11,7 @@ Implementation of a Facebook clone using *Ruby on Rails*.
 6) [ ] The Friend Request shows up in the notifications section of a User’s navbar.
 7) [x] Users can create Posts (text only to start).
 8) [ ] Users can Like Posts.
-9) [ ] Users can Comment on Posts.
+9) [x] Users can Comment on Posts.
 10) [ ] Posts should always display with the post content, author, comments and likes.
 11) [ ] Treat the Posts Index page like the real Facebook’s “Timeline” feature – show all the recent posts from the current user and users she is friends with.
 12) [ ] Users can create a Profile with their personal information and a photo. You can use Gravatar for this photo.

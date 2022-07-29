@@ -1,0 +1,5 @@
+<%= form_with model: Comment.new do |f| %>
+  <%= f.hidden_field "post_id", value: post.id %>
+  <%= f.text_area :body, rows: 2 %>
+  <%= f.submit 'Add Comment', class: "btn btn-success btn-small" %>
+<% end %>

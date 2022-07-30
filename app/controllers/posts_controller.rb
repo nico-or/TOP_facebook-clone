@@ -16,12 +16,11 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      flash[:notice] = "Post successfully created"
+      redirect_back_or_to root_path, success: "Post was successfully created"
     else
-      flash[:alert] = @post.errors
+      redirect_back_or_to root_path, danger: "Post could not be created"
     end
 
-    redirect_back_or_to root_path
   end
 
   private

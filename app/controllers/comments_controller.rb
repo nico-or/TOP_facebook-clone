@@ -4,12 +4,10 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      flash[:notice] = "Comment successfully created"
+      redirect_back_or_to root_path, success: "Comment was successfully created"
     else
-      flash[:alert] = @comment.errors
+      redirect_back_or_to root_path, warning: "Comment could not be created"
     end
-
-    redirect_back_or_to root_path
   end
 
   private

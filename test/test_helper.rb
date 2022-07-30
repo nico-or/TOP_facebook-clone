@@ -11,3 +11,13 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+# Add Devise helper methods
+# https://github.com/heartcombo/devise#test-helpers
+class ActionController::TestCase
+  include Devise::Test::IntegrationHelpers
+end
+
+class ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+end

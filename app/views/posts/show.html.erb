@@ -1,1 +1,28 @@
-<%= render @post, full: true %>
+<div class="row g-4">
+  <div class="col-12 col-lg-8">
+    <h4><%= @post.user %></h4>
+    <p class="card-subtitle text-muted">
+      <%= link_to post_path(@post), class: "text-reset text-decoration-none" do %>
+        <%= time_ago_in_words @post.created_at %> ago.
+      <% end %>
+    </p>
+    <div>
+      <%= @post.body %>
+    </div>
+    <hr>
+    <div>
+      <h5 class="d-inline me-2"><%= pluralize(@post.likes.size, 'like') %></h5>
+      <%= render partial: 'likes/form', locals: { post: @post } %>
+    </div>
+  </div>
+  <div class="col">
+    <h4><%= pluralize(@post.comments.size, 'comment') %></h4>
+    <hr>
+    <%= render partial: 'comments/form', locals: { post: @post } %>
+    <hr>
+    <ul class="mx-2">
+      <%= render partial: 'comments/comment', layout: 'shared/li',
+        collection: @post.comments, as: :comment %>
+    </ul>
+  </div>
+</div>

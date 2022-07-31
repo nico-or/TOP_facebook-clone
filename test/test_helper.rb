@@ -10,14 +10,8 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-end
 
-# Add Devise helper methods
-# https://github.com/heartcombo/devise#test-helpers
-class ActionController::TestCase
-  include Devise::Test::IntegrationHelpers
-end
-
-class ActionDispatch::IntegrationTest
+  # Add Devise helper methods
+  # https://github.com/heartcombo/devise#test-helpers
   include Devise::Test::IntegrationHelpers
 end

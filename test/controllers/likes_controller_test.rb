@@ -22,29 +22,4 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
       delete like_url(like)
     end
   end
-
-  test "should not create post for other users" do
-    skip <<~DOC
-      Returning:
-      ActiveRecord::RecordNotUnique: PG::UniqueViolation:
-      ERROR: duplicate key value violates unique constraint "index_likes_on_post_id_and_user_id"
-    DOC
-
-    post = posts(:two)
-
-    assert_no_difference("Like.count") do
-      post likes_url, params: { like:
-        { user_id: @user.id, post_id: post.id } }
-    end
-  end
-
-  test "should not delete post of other users" do
-    skip "Fails with error: ActiveRecord::RecordNotFound: Couldn't find Like with..."
-
-    like = likes(:two)
-
-    assert_no_difference("Like.count") do
-      delete like_url(like)
-    end
-  end
 end

@@ -13,6 +13,7 @@ class HomepageTest < ActionDispatch::IntegrationTest
 
   test "navigation links" do
     assert_select 'nav .nav-item', 'Users'
+    assert_select 'nav .nav-item', 'Posts'
     assert_select 'nav .nav-item', 'Profile'
   end
 end

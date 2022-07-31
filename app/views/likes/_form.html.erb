@@ -1,8 +1,7 @@
 <% if @liked_posts.include? post %>
   <% like =  @likes.find_by(post_id: post.id) %>
   <%= button_to like_path(like), method: :delete,
-  class: "btn btn-primary", form_class: "d-inline",
-  params: { like: { post_id: post.id } } do %>
+  class: "btn btn-primary", form_class: "d-inline" do %>
     <i class="bi bi-heart-fill"></i> Like
   <% end %>
 <% else %>

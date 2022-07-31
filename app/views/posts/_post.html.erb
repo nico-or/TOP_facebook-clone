@@ -2,7 +2,7 @@
   <div class="card h-100">
     <div class="card-header">
       <div class="card-title">
-        <%= post.user %>
+        <%= link_to post.user, user_path(post.user), class: "text-reset text-decoration-none" %>
       </div>
       <div class="card-subtitle text-muted">
         <%= link_to post_path(post), class: "text-reset text-decoration-none" do %>

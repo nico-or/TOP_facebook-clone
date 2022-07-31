@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :comments, only: %i[create]
 
   resources :users, only: %i[index show]
+
+  get '/profile', to: 'users#profile'
 end

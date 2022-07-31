@@ -15,4 +15,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get user_url(@user)
     assert_response :success
   end
+
+  test "should get /profile" do
+    get '/profile'
+    assert_response :success
+  end
 end

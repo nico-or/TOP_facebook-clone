@@ -2,8 +2,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show]
   before_action :new_post, only: %i[index new]
 
+  before_action :set_liked_posts, only: %i[index show]
+  before_action :set_likes, only: %i[index show]
+
   def index
-    @posts = Post.all.includes(:comments, :user)
+    @posts = Post.all.includes(:comments, :user, :likes)
   end
 
   def show
@@ -35,5 +38,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:body)
+  end
+
+  def set_liked_posts
+    @liked_posts = current_user.liked_posts
+  end
+
+  def set_likes
+    @likes = current_user.likes
   end
 end

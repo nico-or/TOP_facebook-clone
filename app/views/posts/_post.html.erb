@@ -9,6 +9,11 @@
     <div>
       <%= post.body %>
     </div>
+    <hr>
+    <div>
+      <h5 class="d-inline me-2"><%= pluralize(post.likes.size, 'like') %></h5>
+      <%= render partial: 'likes/form', locals: { post: post } %>
+    </div>
   </div>
   <div class="col">
     <h4><%= pluralize(post.comments.size, 'comment') %></h4>

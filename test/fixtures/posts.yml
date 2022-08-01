@@ -7,3 +7,7 @@ one:
 two:
   body: MyText
   user: two
+
+three:
+  body: MyText
+  user: one

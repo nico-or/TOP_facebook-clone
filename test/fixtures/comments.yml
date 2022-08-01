@@ -1,0 +1,9 @@
+one:
+  body: sometext
+  post: one
+  user: one
+
+two:
+  body: sometext
+  post: one
+  user: two

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_30_202508) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_02_032502) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,15 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_30_202508) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "friend_requests", force: :cascade do |t|
-    t.bigint "sender_id"
-    t.bigint "receiver_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["receiver_id"], name: "index_friend_requests_on_receiver_id"
-    t.index ["sender_id"], name: "index_friend_requests_on_sender_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -59,14 +50,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_30_202508) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "friend_requests", "users", column: "receiver_id"
-  add_foreign_key "friend_requests", "users", column: "sender_id"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"

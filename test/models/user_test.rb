@@ -10,6 +10,11 @@ class UserTest < ActiveSupport::TestCase
     refute @user.valid?
   end
 
+  test "invalid without username" do
+    @user.username = nil
+    refute @user.valid?
+  end
+
   test "access the user posts" do
     assert_respond_to @user, :posts
     assert_equal @user.posts.size, 2

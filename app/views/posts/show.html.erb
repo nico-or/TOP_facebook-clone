@@ -1,6 +1,6 @@
 <div class="row g-4">
   <div class="col-12 col-lg-8">
-    <h4><%= @post.user %></h4>
+    <h4><%= @post.user.username %></h4>
     <p class="card-subtitle text-muted">
       <%= link_to post_path(@post), class: "text-reset text-decoration-none" do %>
         <%= time_ago_in_words @post.created_at %> ago.

@@ -1,5 +1,7 @@
 one:
+  username: userOne
   email: one@example.com
 
 two:
+  username: userTwo
   email: two@example.com

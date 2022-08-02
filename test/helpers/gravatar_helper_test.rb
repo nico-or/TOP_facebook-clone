@@ -1,12 +1,10 @@
 require "test_helper"
+require 'digest/md5'
 
 class GravatarHelperTest < ActionView::TestCase
   setup do
-    @email = 'user@example.com'
-    @digest = 'b58996c504c5638798eb6b511e6f49af'
-
-    User = Struct.new(:email, keyword_init: true)
-    @user = User.new(email: @email)
+    @user = users(:one)
+    @digest = Digest::MD5.hexdigest @user.email
   end
 
   test "produces correct url with no options hash" do

@@ -1,13 +1,20 @@
 <div class="col-12 col-lg-6 col-xl-4 p-2">
   <div class="card h-100">
     <div class="card-header">
-      <div class="card-title">
-        <%= link_to post.user.username, user_path(post.user), class: "text-reset text-decoration-none" %>
-      </div>
-      <div class="card-subtitle text-muted">
-        <%= link_to post_path(post), class: "text-reset text-decoration-none" do %>
-          <%= time_ago_in_words post.created_at %> ago.
-        <% end %>
+      <div class="d-flex gap-2 align-items-center">
+        <div class="h-100">
+          <%= gravatar_image_tag(post.user, class: "rounded", size: 50) %>
+        </div>
+        <div>
+          <div class="card-title">
+            <%= link_to post.user.username, user_path(post.user), class: "text-reset text-decoration-none" %>
+          </div>
+          <div class="card-subtitle text-muted">
+            <%= link_to post_path(post), class: "text-reset text-decoration-none" do %>
+              <%= time_ago_in_words post.created_at %> ago.
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card-body">

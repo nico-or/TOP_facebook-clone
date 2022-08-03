@@ -3,11 +3,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :likes, only: %i[create destroy]
-
   resources :posts, only: %i[index show create destroy]  do
     resources :comments, only: %i[create]
+    resources :likes, only: %i[create]
   end
+
+  resources :likes, only: %i[destroy]
 
   resources :users, only: %i[index show]
 

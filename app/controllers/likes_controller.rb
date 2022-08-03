@@ -1,7 +1,9 @@
 class LikesController < ApplicationController
+  before_action :set_post, only: %i[create]
+
   def create
     @like = current_user.likes.build
-    @like.post_id = like_params[:post_id]
+    @like.post = @post
     @like.save
 
     # if @like.save
@@ -28,7 +30,7 @@ class LikesController < ApplicationController
 
   private
 
-  def like_params
-    params.require(:like).permit(:user_id, :post_id)
+  def set_post
+    @post = Post.find(params[:post_id])
   end
 end

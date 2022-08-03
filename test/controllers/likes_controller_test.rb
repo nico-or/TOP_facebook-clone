@@ -10,8 +10,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     post = posts(:two)
 
     assert_difference("Like.count") do
-      post likes_url, params: { like:
-          { user_id: @user.id, post_id: post.id } }
+      post post_likes_url(post)
     end
   end
 

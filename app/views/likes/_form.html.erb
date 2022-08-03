@@ -5,9 +5,8 @@
     <i class="bi bi-heart-fill"></i> Like
   <% end %>
 <% else %>
-  <%= button_to likes_path, method: :post,
-  class: "btn btn-outline-primary", form_class: "d-inline",
-  params: { like: { post_id: post.id } } do %>
+  <%= button_to post_likes_path(post), method: :post,
+  class: "btn btn-outline-primary", form_class: "d-inline" do %>
     <i class="bi bi-heart"></i> Like
   <% end %>
 <% end %>

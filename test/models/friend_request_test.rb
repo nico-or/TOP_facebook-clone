@@ -17,4 +17,22 @@ class FriendRequestTest < ActiveSupport::TestCase
 
     assert_equal request.pending?, true
   end
+
+  test "can't sent inverse request" do
+    req_1 = FriendRequest.create(
+      sender: users(:one),
+      receiver: users(:two)
+    )
+
+    req_2 = FriendRequest.new(
+      sender: users(:two),
+      receiver: users(:one)
+    )
+
+    refute req_2.valid?
+
+    assert_no_changes 'FriendRequest.count' do
+      req_2.save
+    end
+  end
 end

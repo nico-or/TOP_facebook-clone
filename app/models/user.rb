@@ -11,4 +11,14 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
+
+  has_many :sent_friend_requests,
+           class_name: :FriendRequest,
+           foreign_key: :sender_id,
+           dependent: :destroy
+
+  has_many :received_friend_requests,
+           class_name: :FriendRequest,
+           foreign_key: :receiver_id,
+           dependent: :destroy
 end

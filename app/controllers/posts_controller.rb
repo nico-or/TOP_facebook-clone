@@ -3,7 +3,9 @@ class PostsController < ApplicationController
   before_action :new_post, only: %i[index new]
 
   def index
-    @posts = Post.all.includes(:comments, :user, :likes)
+    @posts = Post.where(user: current_user.visible_users)
+                 .includes(:comments, :user, :likes)
+                 .order(updated_at: :desc)
   end
 
   def show

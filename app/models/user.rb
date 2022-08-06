@@ -28,4 +28,8 @@ class User < ApplicationRecord
     out += received_friend_requests.accepted.map(&:sender)
     out
   end
+
+  def visible_users
+    friends << self
+  end
 end

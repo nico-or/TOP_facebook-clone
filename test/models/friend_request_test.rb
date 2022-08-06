@@ -44,4 +44,20 @@ class FriendRequestTest < ActiveSupport::TestCase
 
     refute repeated_request.valid?, 'a repeated request was created'
   end
+
+  test "finds a FriendRequest between two users" do
+    query = FriendRequest.find_between(users(:one), users(:two))
+    assert_equal query, @request
+
+    query = FriendRequest.find_between(users(:two), users(:one))
+    assert_equal query, @request
+  end
+
+  test "doesn't find a FriendRequest between two unrelated users" do
+    query = FriendRequest.find_between(users(:one), users(:three))
+    assert query.nil?
+
+    query = FriendRequest.find_between(users(:three), users(:one))
+    assert query.nil?
+  end
 end

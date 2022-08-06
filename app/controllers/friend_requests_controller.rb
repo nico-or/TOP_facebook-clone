@@ -8,4 +8,8 @@ class FriendRequestsController < ApplicationController
   def destroy
     FriendRequest.find(params[:id]).destroy
   end
+
+  def accept
+    FriendRequest.find(params[:id]).accepted!
+  end
 end

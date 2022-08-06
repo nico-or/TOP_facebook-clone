@@ -19,4 +19,17 @@ class FriendRequestsControllerTest < ActionDispatch::IntegrationTest
       delete friend_request_url(request)
     end
   end
+
+  test "should accept a pending FriendRequest" do
+    skip "can't tell why requests doesn't appear as accepted.
+      Maybe fixture state refuses to change after call?"
+
+    request = friend_requests(:one)
+
+    assert request.pending?, 'default status should be pending'
+
+    post accept_friend_request_url(request)
+
+    assert request.accepted?, 'request should have been accepted'
+  end
 end

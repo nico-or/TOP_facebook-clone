@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     resources :friend_requests, only: %i[create]
   end
 
+  resources :friend_requests, only: %i[destroy]
+
   get '/profile', to: 'users#profile'
 end

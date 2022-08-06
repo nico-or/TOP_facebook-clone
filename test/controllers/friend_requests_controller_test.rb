@@ -11,4 +11,12 @@ class FriendRequestsControllerTest < ActionDispatch::IntegrationTest
       post user_friend_requests_url(users(:three))
     end
   end
+
+  test "should destroy a FriendRequest" do
+    request = friend_requests(:one)
+
+    assert_difference("FriendRequest.count", -1) do
+      delete friend_request_url(request)
+    end
+  end
 end

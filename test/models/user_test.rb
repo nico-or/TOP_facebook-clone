@@ -40,4 +40,24 @@ class UserTest < ActiveSupport::TestCase
       @user.destroy
     end
   end
+
+  test "can query a users friends" do
+    request = FriendRequest.create(
+      sender: users(:one),
+      receiver: users(:two))
+
+    request.accepted!
+
+    assert users(:one).friends.count == 1
+    assert users(:one).friends.include? users(:two)
+    assert users(:two).friends.include? users(:one)
+
+    request = FriendRequest.create(
+      sender: users(:three),
+      receiver: users(:one))
+
+    request.accepted!
+
+    assert users(:one).friends.count == 2
+  end
 end

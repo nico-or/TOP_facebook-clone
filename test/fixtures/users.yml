@@ -5,3 +5,7 @@ one:
 two:
   username: userTwo
   email: two@example.com
+
+three:
+  username: userThree
+  email: three@example.com

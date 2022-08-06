@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   resources :likes, only: %i[destroy]
 
-  resources :users, only: %i[index show]
+  resources :users, only: %i[index show] do
+    resources :friend_requests, only: %i[create]
+  end
 
   get '/profile', to: 'users#profile'
 end

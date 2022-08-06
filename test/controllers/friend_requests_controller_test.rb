@@ -31,4 +31,18 @@ class FriendRequestsControllerTest < ActionDispatch::IntegrationTest
 
     assert @request.accepted?, 'request should have been accepted'
   end
+
+  test "should not create duplicate FriendRequests" do
+    assert_no_difference "FriendRequest.count" do
+      post user_friend_requests_url(users(:two))
+    end
+  end
+
+  test "should not create a reversed FriendRequests" do
+    sign_in users(:two)
+
+    assert_no_difference "FriendRequest.count" do
+      post user_friend_requests_url(users(:one))
+    end
+  end
 end

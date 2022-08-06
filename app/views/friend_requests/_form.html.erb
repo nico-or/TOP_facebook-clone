@@ -1,0 +1,12 @@
+<% if current_user == user %>
+
+<% elsif request = FriendRequest.accepted.find_between(current_user, user) %>
+  <%= button_to 'Unfriend', friend_request_path(request), class: 'btn btn-outline-primary', method: :delete %>
+<% elsif request = FriendRequest.find_by(sender: current_user, receiver: user) %>
+  <%= button_to 'Cancel Request', friend_request_path(request), class: 'btn btn-outline-danger', method: :delete %>
+<% elsif request = FriendRequest.find_by(sender: user, receiver: current_user) %>
+  <%= button_to 'Accept Request', accept_friend_request_path(request), class: 'btn btn-success' %>
+  <%= button_to 'Cancel Request', friend_request_path(request), class: 'btn btn-outline-danger', method: :delete %>
+<% else %>
+  <%= button_to 'Add Friend', user_friend_requests_path(user), class: 'btn btn-primary' %>
+<% end %>

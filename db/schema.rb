@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_000000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["receiver_id"], name: "index_friend_requests_on_receiver_id"
+    t.index ["sender_id", "receiver_id"], name: "index_friend_requests_on_sender_id_and_receiver_id", unique: true
     t.index ["sender_id"], name: "index_friend_requests_on_sender_id"
   end
 

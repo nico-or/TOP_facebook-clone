@@ -28,4 +28,12 @@ class FriendRequestTest < ActiveSupport::TestCase
       reverse_request.save
     end
   end
+
+  test "can't sent same FriendRequest twice" do
+    repeated_request = FriendRequest.new(
+      sender: users(:one),
+      receiver: users(:two))
+
+    refute repeated_request.valid?, 'a repeated request was created'
+  end
 end

@@ -15,7 +15,7 @@ Checkout the live app [here](https://stormy-cove-02674.herokuapp.com/).
 8) [x] Users can Like Posts.
 9) [x] Users can Comment on Posts.
 10) [ ] Posts should always display with the post content, author, comments and likes.
-11) [ ] Treat the Posts Index page like the real Facebook’s “Timeline” feature – show all the recent posts from the current user and users she is friends with.
+11) [x] Treat the Posts Index page like the real Facebook’s “Timeline” feature – show all the recent posts from the current user and users she is friends with.
 12) [ ] Users can create a Profile with their personal information and a photo. You can use Gravatar for this photo.
 13) [ ] The User Show page contains their Profile information, photo, and Posts.
 14) [x] The Users Index page lists all users and buttons for sending Friend Requests to those who are not already friends or who don’t already have a pending request.

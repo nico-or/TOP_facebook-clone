@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.where(user: current_user.visible_users)
                  .includes(:comments, :user, :likes)
-                 .order(updated_at: :desc)
+                 .newest_first
   end
 
   def show

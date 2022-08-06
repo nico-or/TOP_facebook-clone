@@ -5,6 +5,7 @@ class FriendRequest < ApplicationRecord
   #   ActiveRecord::RecordInvalid: Validation failed: A identical request already exists
   validates_with UniqueFriendRequestValidator, on: :create
   validates_with SingleFriendRequestValidator
+  validates_with SelfFriendRequestValidator
 
   belongs_to :sender, class_name: :User
   belongs_to :receiver, class_name: :User

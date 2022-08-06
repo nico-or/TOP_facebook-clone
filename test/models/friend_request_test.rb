@@ -36,4 +36,12 @@ class FriendRequestTest < ActiveSupport::TestCase
 
     refute repeated_request.valid?, 'a repeated request was created'
   end
+
+  test "can't send FriendRequest to itself" do
+    repeated_request = FriendRequest.new(
+      sender: users(:one),
+      receiver: users(:one))
+
+    refute repeated_request.valid?, 'a repeated request was created'
+  end
 end

@@ -10,3 +10,7 @@
 <h2>Posts</h2>
 
 <%= render partial: "posts/post", collection: @user.posts %>
+
+<h2>Friends</h2>
+
+<%= render partial: "users/user", collection: @user.friends %>

@@ -22,7 +22,7 @@
     <hr>
     <ul class="mx-2">
       <%= render partial: 'comments/comment', layout: 'shared/li',
-        collection: @post.comments, as: :comment %>
+        collection: @post.comments.newest_first, as: :comment %>
     </ul>
   </div>
 </div>

@@ -1,0 +1,31 @@
+<% modal_id = "#{dom_id(post)}_CommentsModal"%>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target=<%="##{modal_id}"%>>
+  Comment
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id=<%=modal_id%> tabindex="-1" aria-labelledby=<%="#{modal_id}_CommentsModalLabel"%> aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1>Comments</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="vstack gap-2">
+          <% if post.comments.empty? %>
+            <p>No comments</p>
+          <% else %>
+            <%= render partial: 'comments/comment', collection: post.comments.newest_first, as: :comment %>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= render partial: 'comments/form', locals: { post: post } %>
+      </div>
+    </div>
+  </div>
+</div>

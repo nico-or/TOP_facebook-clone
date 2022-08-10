@@ -29,12 +29,15 @@
     </div>
     <div class="card-footer">
       <div class="hstack gap-2">
-        <%= render partial: 'likes/modal', locals: { post: post } %>
-        <%= render partial: 'likes/form', locals: { post: post } %>
+        <div class="vstack gap-1">
+          <%= render partial: 'likes/modal', locals: { post: post } %>
+          <%= render partial: 'likes/form', locals: { post: post, klass: 'w-100' } %>
+        </div>
+        <div class="vstack gap-1">
+          <div class="text-end"><%= pluralize(post.comments.size, 'Comment') %></div>
+          <%= render partial: 'comments/modal', locals: { post: post } %>
+        </div>
       </div>
-      <hr>
-      <p><%= pluralize(post.comments.size, 'Comment') %></p>
-      <%= render partial: 'comments/form', locals: { post: post } %>
     </div>
   </div>
 </div>

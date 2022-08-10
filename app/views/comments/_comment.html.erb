@@ -1,1 +1,13 @@
-<p><%= comment.body %></p>
+<div class="hstack">
+  <div class="align-self-start p-2">
+    <%= gravatar_image_tag(comment.user, class: "rounded", size: 30) %>
+  </div>
+  <div class="vstack">
+    <div>
+      <%= simple_format(comment.body, {}, wrapper_tag: 'div') %>
+    </div>
+    <div class="text-muted">
+      <%= time_ago_in_words comment.updated_at %> ago.
+    </div>
+  </div>
+</div>

@@ -20,9 +20,8 @@
     <hr>
     <%= render partial: 'comments/form', locals: { post: @post } %>
     <hr>
-    <ul class="mx-2">
-      <%= render partial: 'comments/comment', layout: 'shared/li',
-        collection: @post.comments.newest_first, as: :comment %>
-    </ul>
+    <div class="vstack gap-3">
+      <%= render partial: 'comments/comment', collection: @post.comments.newest_first, as: :comment %>
+    </div>
   </div>
 </div>

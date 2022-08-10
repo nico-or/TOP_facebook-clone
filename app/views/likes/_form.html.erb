@@ -1,12 +1,12 @@
 <% if current_user.liked_posts.include? post %>
   <% like =  current_user.likes.find_by(post_id: post.id) %>
   <%= button_to like_path(like), method: :delete,
-  class: "btn btn-primary", form_class: "d-inline" do %>
-    <i class="bi bi-heart-fill"></i> Like
+  class: "btn btn-outline-primary", form_class: "d-inline" do %>
+    <%= bootstrap_icon('heart') %> Liked
   <% end %>
 <% else %>
   <%= button_to post_likes_path(post), method: :post,
-  class: "btn btn-outline-primary", form_class: "d-inline" do %>
-    <i class="bi bi-heart"></i> Like
+  class: "btn btn-primary", form_class: "d-inline" do %>
+    <%= bootstrap_icon('heart-fill') %> Like
   <% end %>
 <% end %>

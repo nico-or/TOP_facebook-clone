@@ -1,0 +1,31 @@
+<% modal_id = "#{dom_id(post)}_LikesModal"%>
+<!-- Link trigger modal -->
+<%= link_to pluralize(post.likes.size, 'like'), "##{modal_id}", {
+  'data-bs-toggle' => "modal", class: "text-reset text-decoration-none" } %>
+
+<!-- Modal -->
+<div class="modal fade" id=<%=modal_id%> tabindex="-1" aria-labelledby=<%="#{modal_id}_LikesModalLabel"%> aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1>Likes</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="vstack gap-2">
+
+          <% if post.liking_users.empty? %>
+            No likes
+          <% else %>
+          <% post.liking_users.each do |user| %>
+              <div class="hstack gap-2">
+                <%= gravatar_image_tag(user, size: 20) %>
+                <%= user.username %>
+              </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

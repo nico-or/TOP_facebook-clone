@@ -28,8 +28,8 @@
       <p class="card-text"><%= truncate post.body, length: 256 %></p>
     </div>
     <div class="card-footer">
-      <div class="align-middle">
-        <p class="d-inline me-2"><%= pluralize(post.likes.size, 'Like') %></p>
+      <div class="hstack gap-2">
+        <%= render partial: 'likes/modal', locals: { post: post } %>
         <%= render partial: 'likes/form', locals: { post: post } %>
       </div>
       <hr>

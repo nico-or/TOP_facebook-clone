@@ -10,8 +10,8 @@
       <%= @post.body %>
     </div>
     <hr>
-    <div>
-      <h5 class="d-inline me-2"><%= pluralize(@post.likes.size, 'like') %></h5>
+    <div class="hstack gap-2">
+      <%= render partial: 'likes/modal', locals: { post: @post } %>
       <%= render partial: 'likes/form', locals: { post: @post } %>
     </div>
   </div>

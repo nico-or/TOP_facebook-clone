@@ -7,13 +7,20 @@
         </div>
         <div>
           <div class="card-title">
-            <%= link_to post.user.username, user_path(post.user), class: "text-reset text-decoration-none" %>
+            <%= post.user.username %>
           </div>
           <div class="card-subtitle text-muted">
-            <%= link_to post_path(post), class: "text-reset text-decoration-none" do %>
-              <%= time_ago_in_words post.created_at %> ago.
-            <% end %>
+            <%= time_ago_in_words post.created_at %> ago.
           </div>
+        </div>
+        <div class="dropdown ms-auto">
+          <button class="btn btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= bootstrap_icon('list') %>
+          </button>
+          <ul class="dropdown-menu">
+            <li><%= link_to "View user profile", user_path(post.user), class: "dropdown-item" %></li>
+            <li><%= link_to "View Post", post_path(post), class: "dropdown-item" %></li>
+          </ul>
         </div>
       </div>
     </div>

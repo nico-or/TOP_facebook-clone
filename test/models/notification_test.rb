@@ -30,4 +30,21 @@ class NotificationTest < ActiveSupport::TestCase
 
     assert_equal users(:two), Notification.last.user
   end
+
+  test "Destroys Notifications after destroying the notificable" do
+    request = FriendRequest.create(sender: users(:one), receiver: users(:two))
+
+    assert_difference "Notification.count", -1 do
+      request.destroy
+    end
+  end
+
+  test "Destroys Notifications after destroying the user" do
+    user = users(:two)
+    FriendRequest.create(sender: users(:one), receiver: user)
+
+    assert_difference "Notification.count", -1 do
+      user.destroy
+    end
+  end
 end

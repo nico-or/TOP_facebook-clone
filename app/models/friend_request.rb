@@ -10,7 +10,7 @@ class FriendRequest < ApplicationRecord
   belongs_to :sender, class_name: :User
   belongs_to :receiver, class_name: :User
 
-  has_many :notifications, as: :notificable
+  has_many :notifications, as: :notificable, dependent: :destroy
 
   enum :status, [:pending, :accepted, :rejected]
 

@@ -22,7 +22,7 @@ class User < ApplicationRecord
            foreign_key: :receiver_id,
            dependent: :destroy
 
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
 
   def friends
     out = []

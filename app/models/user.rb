@@ -22,6 +22,8 @@ class User < ApplicationRecord
            foreign_key: :receiver_id,
            dependent: :destroy
 
+  has_many :notifications
+
   def friends
     out = []
     out += sent_friend_requests.accepted.map(&:receiver)

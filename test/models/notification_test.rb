@@ -25,4 +25,12 @@ class NotificationTest < ActiveSupport::TestCase
 
     refute @notification.valid?
   end
+
+  test "Can't create without notificable" do
+    assert @notification.valid?
+
+    @notification.notificable = nil
+
+    refute @notification.valid?
+  end
 end

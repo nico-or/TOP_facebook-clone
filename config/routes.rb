@@ -18,7 +18,9 @@ Rails.application.routes.draw do
     post 'accept', on: :member
   end
 
-  resources :notifications, only: %i[index]
+  resources :notifications, only: %i[index] do
+    get 'read', on: :member
+  end
 
   get '/profile', to: 'users#profile'
 end

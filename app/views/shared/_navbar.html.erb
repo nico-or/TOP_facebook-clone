@@ -22,9 +22,12 @@
         <li class="nav-item">
           <%= link_to notifications_path, class: "nav-link" do %>
             Notifications
-            <span class="badge rounded-pill text-bg-danger">
-              <%= current_user.notifications.unread.count %>
-            </span>
+            <% unread_notifications =  current_user.notifications.unread %>
+            <% if unread_notifications.any? %>
+              <span class="badge rounded-pill text-bg-danger">
+                <%= unread_notifications.count %>
+              </span>
+            <% end %>
           <% end %>
         </li>
         <!-- Dropdown menu

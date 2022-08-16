@@ -25,7 +25,11 @@ class NotificationTest < ActiveSupport::TestCase
 
   test "Creating a new FriendRequest sends a Notification to the receiver" do
     assert_difference "Notification.count", 1 do
-      FriendRequest.create(sender: users(:one), receiver: users(:two))
+      assert_difference "users(:two).notifications.count", 1 do
+        assert_no_difference "users(:one).notifications.count" do
+          FriendRequest.create(sender: users(:one), receiver: users(:two))
+        end
+      end
     end
 
     assert_equal users(:two), Notification.last.user

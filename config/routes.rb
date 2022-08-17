@@ -10,9 +10,11 @@ Rails.application.routes.draw do
 
   resources :likes, only: %i[destroy]
 
-  resources :users, only: %i[index show] do
+  resources :users, only: %i[index show update] do
     resources :friend_requests, only: %i[create]
   end
+
+  resource :description, only: :edit
 
   resources :friend_requests, only: %i[destroy] do
     post 'accept', on: :member

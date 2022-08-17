@@ -20,4 +20,17 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get '/profile'
     assert_response :success
   end
+
+  test "should patch/update" do
+    new_description = 'lorem ipsum'
+    user_params = { description: new_description }
+
+    patch user_path(@user), params: { user: user_params }
+
+    assert_redirected_to @user
+
+    @user.reload
+
+    assert_equal new_description, @user.description
+  end
 end

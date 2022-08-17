@@ -1,0 +1,12 @@
+<h2>Edit Description</h2>
+
+<%= form_with model: @user do |f| %>
+  <%= f.label :description, "Description",
+  class: 'form-label visually-hidden' %>
+  <%= f.text_area :description,
+    rows: 10,
+    class: "form-control mb-2" %>
+
+  <%= f.submit "Submit",
+  class: 'btn btn-primary' %>
+<% end %>

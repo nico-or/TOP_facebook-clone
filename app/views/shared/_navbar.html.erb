@@ -30,21 +30,23 @@
             <% end %>
           <% end %>
         </li>
-        <!-- Dropdown menu
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">View Profile</a></li>
-            <li><a class="dropdown-item" href="#">log_out</a></li>
+      </ul>
+      <ul class="navbar-nav mb-2 mb-sm-0">
+        <!-- Dropdown menu -->
+        <li class="nav-item dropdown-center">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Options
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li class="px-2">
+              <!-- Sign Out button -->
+              <%= button_to "Sign Out", destroy_user_session_path,
+                method: :delete, data: { turbo: false },
+                class: 'dropdown-item bg-danger text-white rounded-2' %>
+            </li>
           </ul>
         </li>
-        -->
       </ul>
-      <!-- Sign Out button -->
-      <%= button_to "Sign Out", destroy_user_session_path,
-        method: :delete, data: { turbo: false },
-        class: 'btn btn-danger px-3' %>
-
     </div>
   </div>
 </nav>

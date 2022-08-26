@@ -2,9 +2,10 @@
 
 Implementation of a Facebook clone using *Ruby on Rails*.
 
-You can test the [live deployment][heroku app] on Heroku.
+~You can test the [live deployment] on Heroku.~ Removed after [Heroku's announcement to end free tier dynos][heroku announcement].
 
 [heroku app]: https://stormy-cove-02674.herokuapp.com/
+[heroku announcement]: https://blog.heroku.com/next-chapter
 
 ## Specifications
 1) [x] Use PostgreSQL for your database from the beginning (not SQLite3), that way your deployment to Heroku will go much more smoothly. See the Heroku Docs for setup info.

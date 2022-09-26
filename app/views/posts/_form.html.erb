@@ -1,5 +1,6 @@
 <%= form_with(model: post) do |f| %>
   <div>
+    <%= f.label :body, "Post Body", class: "form-label visually-hidden" %>
     <%= f.text_area :body, class: "form-control", required: true %>
   </div>
   <div>

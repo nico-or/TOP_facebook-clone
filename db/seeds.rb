@@ -8,6 +8,7 @@ end
 # constants
 TOTAL_USERS = 10
 POSTS_PER_USER = 10
+FRIENDS_PER_USER = 5
 
 # Default User
 User.create(
@@ -33,5 +34,16 @@ User.find_each do |user|
     user.posts.create(
       body: "lorem ipsum...",
     )
+  end
+end
+
+# Populate with Friendships
+User.find_each do |sender|
+  User.all.sample(random_integer(FRIENDS_PER_USER)).each do |receiver|
+    req = FriendRequest.find_or_create_by(sender: sender, receiver: receiver)
+    if req.valid?
+      req.save
+      req.accepted!
+    end
   end
 end

@@ -2,6 +2,9 @@
 
 # helper methods
 
+# constants
+TOTAL_USERS = 10
+
 # Default User
 User.create(
   username: "username",
@@ -11,7 +14,7 @@ User.create(
 )
 
 # Populate with Users
-9.times do |n|
+(TOTAL_USERS - 1).times do |n|
   User.create(
     username: "user-#{n}",
     email: "user-#{n}@example.com",

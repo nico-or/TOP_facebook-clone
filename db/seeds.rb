@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 # helper methods
+def random_integer(n)
+  (n * rand).to_int
+end
 
 # constants
 TOTAL_USERS = 10
+POSTS_PER_USER = 10
 
 # Default User
 User.create(
@@ -24,9 +28,10 @@ User.create(
 end
 
 # Populate with Posts
-users = User.all.records
-5.times do
-  user = users.sample
-  text = "lorem ipsum..."
-  user.posts.create(body: text)
+User.find_each do |user|
+  random_integer(POSTS_PER_USER).times do
+    user.posts.create(
+      body: "lorem ipsum...",
+    )
+  end
 end

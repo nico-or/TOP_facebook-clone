@@ -9,6 +9,7 @@ end
 TOTAL_USERS = 10
 POSTS_PER_USER = 10
 FRIENDS_PER_USER = 5
+COMMENTS_PER_USER = 10
 
 # Default User
 User.create(
@@ -45,5 +46,22 @@ User.find_each do |sender|
       req.save
       req.accepted!
     end
+  end
+end
+
+# Populate with Comments
+User.find_each do |user|
+  all_friend_posts = user.friends.flat_map(&:posts)
+
+  # sample with replacement
+  friend_posts_to_comment = random_integer(COMMENTS_PER_USER).times.map do
+    all_friend_posts.sample
+  end
+
+  friend_posts_to_comment.each do |friend_post|
+    friend_post.comments.create(
+      user: user,
+      body: "lorem ipsum...",
+    )
   end
 end

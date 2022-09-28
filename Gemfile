@@ -77,3 +77,5 @@ end
 gem "devise", "~> 4.8"
 
 gem "faker", "~> 2.22", :group => :development
+
+gem "kaminari", "~> 1.2"

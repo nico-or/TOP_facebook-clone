@@ -4,6 +4,14 @@
 
 <hr>
 
-<div class="row">
-  <%= render @posts %>
-</div>
+<%= turbo_frame_tag "paginate_page_#{@posts.current_page}", target: "_top", data: { turbo: true } do %>
+  <div class="row">
+      <%= render @posts %>
+  </div>
+
+  <% if @posts.next_page %>
+    <%= turbo_frame_tag "paginate_page_#{@posts.next_page}", src: posts_path(page: @posts.next_page), loading: "lazy" do %>
+      Loading...
+    <% end %>
+  <% end %>
+<% end %>

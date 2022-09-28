@@ -6,6 +6,8 @@ class PostsController < ApplicationController
     @posts = Post.where(user: current_user.visible_users)
                  .includes(:comments, :user, :likes)
                  .newest_first
+                 .page(params[:page])
+                 .per(12)
   end
 
   def show
